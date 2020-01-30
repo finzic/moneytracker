@@ -2,6 +2,7 @@ package it.finzicontini.digiledger;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.icu.util.CurrencyAmount;
 import android.speech.RecognizerIntent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private TextView voiceInput;
     private TextView speakButton;
+    private TextView txtCategory;
+    private TextView txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         voiceInput = (TextView) findViewById(R.id.voiceInput);
         speakButton = (TextView) findViewById(R.id.btnSpeak);
+        txtCategory = (TextView) findViewById(R.id.txtCategory);
+        txtAmount = (TextView) findViewById(R.id.txtAmount);
 
         speakButton.setOnClickListener(new View.OnClickListener() {
 
@@ -64,7 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    voiceInput.setText(result.get(0));
+                    CharSequence c = result.get(0);
+                    voiceInput.setText(c);
+                    String dataString = c.toString();
+                    String[] split = dataString.split(" ");
+                    String firstSubString = split[0];
+                    String secondSubString = split[1];
+                    txtCategory.setText(firstSubString);
+                    txtAmount.setText(secondSubString);
+
                 }
                 break;
             }

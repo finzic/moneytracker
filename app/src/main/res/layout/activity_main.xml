@@ -22,28 +22,49 @@
             android:textStyle="normal" />
 
         <LinearLayout
-            android:gravity="center"
+            android:id="@+id/vertical1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:background="@color/colorPrimary"
-                android:clickable="true"
-                android:gravity="center"
                 android:id="@+id/btnSpeak"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/tap_to_open_mic"
                 android:textColor="@color/colorAccent"
                 android:textSize="22sp"
-                android:textStyle="normal"
-                android:focusable="true" />
+                android:textStyle="normal" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/voiceInput"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="114dp"
+            android:text="@string/Category" />
+
+        <TextView
+            android:id="@+id/txtAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/voiceInput"
+            android:layout_marginStart="294dp"
+            android:layout_marginTop="100dp"
+            android:layout_toEndOf="@+id/txtCategory"
+            android:text="@string/Amount" />
 
     </RelativeLayout>
 
