@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Digiledger</string>
+    <string name="tap_to_open_mic">Tap and say the latest expense</string>
+</resources>
