@@ -3,4 +3,7 @@
     <string name="tap_to_open_mic">Inserisci una nuova spesa</string>
     <string name="Category">Categoria</string>
     <string name="Amount">Importo</string>
+    <string name="strDate">Date</string>
+    <string name="strAmount">amount</string>
+    <string name="strDescription">Description</string>
 </resources>
