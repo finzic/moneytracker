@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupTestData();
         ledgerListRecyclerView = (RecyclerView) findViewById(R.id.rclExpensesView);
-        ledgerListRecyclerView.setHasFixedSize(true);
+        ledgerListRecyclerView.setHasFixedSize(false);
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);

@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class LedgerDataListAdapter extends RecyclerView.Adapter<LedgerDataListAdapter.ViewHolder> {
@@ -30,7 +32,9 @@ public class LedgerDataListAdapter extends RecyclerView.Adapter<LedgerDataListAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final LedgerData myListData = listOfLedgerData.get(position);
-        holder.dateView.setText(myListData.getDate().toString());
+        final DateFormat sf = new SimpleDateFormat("dd/MM/YYYY");
+
+        holder.dateView.setText(sf.format(myListData.getDate()));
         holder.amountView.setText(myListData.getAmount().toString());
         holder.categoryView.setText(myListData.getCategory());
     }
@@ -38,7 +42,7 @@ public class LedgerDataListAdapter extends RecyclerView.Adapter<LedgerDataListAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.listOfLedgerData.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
