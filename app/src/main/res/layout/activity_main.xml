@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginBottom="53dp"
+        android:onClick="onAddNewExpense"
         android:text="Add New Expense"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,6 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclExpensesView"
         android:layout_width="376dp"
         android:layout_height="510dp"
         android:layout_marginStart="16dp"

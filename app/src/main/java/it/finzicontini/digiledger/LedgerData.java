@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class LedgerData {
     private Date date;
-    private Number amount;
+    private Float amount;
     private String category;
 
-    public LedgerData(Date d, Number a, String c){
+    public LedgerData(Date d, Float a, String c){
         this.date = d ;
         this.amount = a;
         this.category=c;
@@ -17,7 +17,7 @@ public class LedgerData {
         this.date = date;
     }
 
-    public void setAmount(Number amount) {
+    public void setAmount(Float amount) {
         this.amount = amount;
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/txtDate"
         android:layout_width="71dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -14,7 +14,7 @@
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/txtAmount"
         android:layout_width="76dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -23,13 +23,12 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/strDescription"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="text" />
 
 </LinearLayout>

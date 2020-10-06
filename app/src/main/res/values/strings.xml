@@ -4,6 +4,6 @@
     <string name="Category">Categoria</string>
     <string name="Amount">Importo</string>
     <string name="strDate">Date</string>
-    <string name="strAmount">amount</string>
-    <string name="strDescription">Description</string>
+    <string name="strAmount">Amount</string>
+    <string name="strDescription">Category</string>
 </resources>

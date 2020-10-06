@@ -3,9 +3,7 @@ package it.finzicontini.digiledger;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,14 +30,9 @@ public class LedgerDataListAdapter extends RecyclerView.Adapter<LedgerDataListAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final LedgerData myListData = listOfLedgerData.get(position);
-        holder.textView.setText(myListData.getCategory());
-        holder.imageView.setImageResource(listdata[position].getImgId());
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
-            }
-        });
+        holder.dateView.setText(myListData.getDate().toString());
+        holder.amountView.setText(myListData.getAmount().toString());
+        holder.categoryView.setText(myListData.getCategory());
     }
 
 
@@ -51,13 +44,13 @@ public class LedgerDataListAdapter extends RecyclerView.Adapter<LedgerDataListAd
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView dateView;
         public TextView amountView;
-        public TextView descrView;
+        public TextView categoryView;
         public LinearLayout linearLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.dateView = (TextView) itemView.findViewById(R.id.editTextDate);
-            this.amountView = (TextView) itemView.findViewById(R.id.editTextNumber);
-            this.descrView = (TextView) itemView.findViewById(R.id.editTextTextPersonName);
+            this.dateView = (TextView) itemView.findViewById(R.id.txtDate);
+            this.amountView = (TextView) itemView.findViewById(R.id.txtAmount);
+            this.categoryView = (TextView) itemView.findViewById(R.id.txtCategory);
             linearLayout = (LinearLayout)itemView.findViewById(R.id.linLayout);
         }
     }
