@@ -35,7 +35,8 @@
         android:onClick="onAddNewExpense"
         android:text="Add New Expense"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rclExpensesView" />
 
     <Button
         android:id="@+id/btnCalculateTotals"
@@ -45,19 +46,20 @@
         android:layout_marginBottom="53dp"
         android:text="Calculate Totals"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rclExpensesView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rclExpensesView"
-        android:layout_width="317dp"
-        android:layout_height="629dp"
+        android:layout_width="342dp"
+        android:layout_height="339dp"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="748dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCalculateTotals"
+        android:layout_marginBottom="24dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddNewExpense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/lblTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/lblTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

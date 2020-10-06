@@ -10,7 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 //    private TextView txtAmount;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupTestData();
@@ -48,9 +53,14 @@ public class MainActivity extends AppCompatActivity {
         // get the data for the table...
         ledgerDataList = new ArrayList<LedgerData>() ;
         // adding data at random...
-        for (int j = 0; j < 3; j++){
+        for (int j = 0; j < testData.size(); j++){
             int i = new Random().nextInt(testData.size());
-            LedgerData newRow = parseLedgerData(testData.get(i));
+            LedgerData newRow = null;
+            try {
+                newRow = parseLedgerData(testData.get(i));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.ledgerDataList.add(newRow);
         }
         ledgerDataListAdapter = new LedgerDataListAdapter(ledgerDataList);
@@ -59,22 +69,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupTestData(){
-        testData.add("Benzina 10.24");
-        testData.add("Cibo 34.76");
-        testData.add("Bancomat 400.00");
-        testData.add("Benzina 50.00");
-        testData.add("Bancomat 200.00");
-        testData.add("Cibo 127.75");
-        testData.add("Tasse 300.00");
+        testData.add("Benzina €10,24");
+        testData.add("Cibo €34,76");
+        testData.add("Bancomat €400,00");
+        testData.add("Benzina €50.00");
+        testData.add("Bancomat €200.00");
+        testData.add("Cibo €127.75");
+        testData.add("Tasse €300.00");
 
     }
 
     public void onAddNewExpense(View view){
-        addRandomTestData();
-        //askSpeechInput();
+        //addRandomTestData();
+        askSpeechInput();
     }
 
-    private void addRandomTestData(){
+    private void addRandomTestData() throws Exception {
         int i = new Random().nextInt(testData.size());
         LedgerData newRow = parseLedgerData(testData.get(i));
         this.ledgerDataList.add(newRow);
@@ -82,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable(){
             @Override
             public void run() {
-                ledgerDataListAdapter.notifyDataSetChanged();
+                ledgerDataListAdapter.notifyItemInserted(ledgerDataList.size());
             }
         });
     }
@@ -124,10 +134,15 @@ public class MainActivity extends AppCompatActivity {
                     CharSequence c = result.get(0);
                     String dataString = c.toString();
 
-                    LedgerData newRow = parseLedgerData(dataString);
+                    LedgerData newRow = null;
+                    try {
+                        newRow = parseLedgerData(dataString);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                     this.ledgerDataList.add(newRow);
-                    //ledgerDataListAdapter.notifyItemInserted(this.ledgerDataList.size() - 1);
-                    ledgerDataListAdapter.notifyDataSetChanged();
+                    ledgerDataListAdapter.notifyItemInserted(ledgerDataList.size());
+                    ledgerListRecyclerView.scrollToPosition(ledgerDataListAdapter.getItemCount());
                 }
                 break;
             }
@@ -135,11 +150,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private LedgerData parseLedgerData(String dataString) {
+    private LedgerData parseLedgerData(String dataString) throws ParseException {
         String[] split = dataString.split(" ");
         String category = split[0];
         String amountString = split[1];
-        Float amount = Float.parseFloat(amountString);
+        // this is in the form "€30.12"
+        System.out.println("AmountString = " + amountString);
+        Double amount = Double.parseDouble(amountString.substring(1).replace(',', '.'));
+        //Float amount = Float.parseFloat(amountString.substring(1,amountString.length()));
         Date today = GregorianCalendar.getInstance().getTime();
         System.out.println(" Parsing from voice: " + today + " -> " + "Amount = " + amount + " ; category = " + category);
 

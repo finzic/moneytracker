@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linLayout"
+    android:id="@+id/linLayoutVert"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="118dp"
+        android:layout_width="413dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/strDate"
         android:inputType="date"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
         tools:text="@tools:sample/date/ddmmyy" />
 
-    <TextView
-        android:id="@+id/txtAmount"
-        android:layout_width="123dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/linLayoutHor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/strAmount"
-        android:inputType="number" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtCategory"
-        android:layout_width="196dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/strDescription"
-        android:inputType="text" />
+        <TextView
+            android:id="@+id/txtAmount"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/strAmount"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="196dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/strDescription"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>
